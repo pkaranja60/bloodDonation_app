@@ -18,6 +18,7 @@ import { Link } from "expo-router";
 interface SubMenuItem {
   name: string;
   image: number;
+  href: any;
 }
 
 interface MenuCardProps {
@@ -43,7 +44,7 @@ export default function SubMenu() {
 const MenuCard: React.FC<MenuCardProps> = ({ item, index }) => {
   return (
     <View style={{ alignContent: "center" }}>
-      <Link href={"/"} key={index} asChild>
+      <Link href={item.href} key={index} asChild>
         <TouchableOpacity style={styles.menuCard}>
           <Image source={item.image} style={styles.menuImage} />
           <Text style={styles.menuText}>{item.name}</Text>
