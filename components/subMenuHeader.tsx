@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-export default function subMenuHeader() {
+export default function SubMenuHeader() {
   return (
     <View>
       <Text>subMenuHeader</Text>
