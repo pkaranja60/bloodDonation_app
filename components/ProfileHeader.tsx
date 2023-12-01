@@ -14,9 +14,7 @@ export default function ProfileHeader() {
       <StatusBar backgroundColor="#E5E5E5" style="dark" />
       <View style={styles.headerWrapper}>
         <BackButton />
-        <Text style={{ fontSize: 22, fontWeight: "500", textAlign: "center" }}>
-          Profile
-        </Text>
+        <Text style={styles.headerText}>Profile</Text>
         <Feather name="edit" size={24} color="black" />
       </View>
     </View>
@@ -34,5 +32,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: wp(3),
     paddingVertical: hp(2),
+  },
+  headerText: {
+    fontSize: 22,
+    fontWeight: "500",
+    textAlign: "center",
+    marginEnd: 15,
   },
 });

@@ -54,7 +54,7 @@ export default function home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#F5F4F4",
     paddingHorizontal: wp(5),
     paddingVertical: 10,
   },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   bellIcon: {
-    backgroundColor: "#F5EBEB",
+    backgroundColor: "#FFE1E1",
     width: hp(5.5),
     height: hp(5.5),
     justifyContent: "center",
