@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import SubMenuHeader from "../../components/SubMenuHeader";
 
 export default function assistant() {
   return (
     <View>
-      <Text>assistant</Text>
+      <SubMenuHeader name="Assistant" />
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

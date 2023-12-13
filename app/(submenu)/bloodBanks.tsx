@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import SubMenuHeader from '../../components/SubMenuHeader'
 
 export default function bloodBanks() {
   return (
     <View>
-      <Text>bloodBanks</Text>
+     <SubMenuHeader name="Blood Bank" />
     </View>
   )
 }

@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import {
   widthPercentageToDP as wp,
@@ -15,6 +22,7 @@ export default function home() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#E5E5E5" style="dark" />
+
       <View style={styles.headerWrap}>
         <View style={styles.header}>
           <Link href={"/(profile)/profile"} asChild>
@@ -39,14 +47,16 @@ export default function home() {
         </View>
       </View>
 
-      {/* Menu List */}
-      <SubMenu />
+      <ScrollView  showsVerticalScrollIndicator={false}>
+        {/* Menu List */}
+        <SubMenu />
 
-      <View>
-        <Text style={styles.textHeader}>Donation Request</Text>
-        {/* Donation Request Notification */}
-        <DonationRequests />
-      </View>
+        <View>
+          <Text style={styles.textHeader}>Donation Request</Text>
+          {/* Donation Request Notification */}
+          <DonationRequests />
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -76,6 +86,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "500",
     color: "#272A2F",
+    marginTop: 25,
+    marginBottom: 10,
   },
   headerSlider: {
     justifyContent: "center",

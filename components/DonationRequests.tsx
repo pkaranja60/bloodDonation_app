@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 20,
-    elevation: 5,
+    elevation: 3,
   },
   cardTitle: {
     fontSize: 14,

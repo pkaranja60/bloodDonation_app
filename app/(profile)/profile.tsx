@@ -1,13 +1,12 @@
 import {
   Image,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import ProfileHeader from "../../components/ProfileHeader";
 import {
   widthPercentageToDP as wp,
@@ -16,11 +15,18 @@ import {
 import {
   Feather,
   MaterialCommunityIcons,
-  Ionicons,
+  AntDesign,
   MaterialIcons,
 } from "@expo/vector-icons";
+import ToggleSwitch from "toggle-switch-react-native";
 
 export default function profile() {
+  const [isOn, setIsOn] = useState(false);
+
+  const onToggle = () => {
+    setIsOn(!isOn);
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <ProfileHeader />
@@ -74,15 +80,33 @@ export default function profile() {
 
         {/* quick menu */}
         <View style={{ paddingHorizontal: wp(5) }}>
-          <View style={styles.quickMenuCard}>
-            <MaterialIcons
-              name="event-available"
-              size={24}
-              color="#FF2156"
-              style={{ paddingHorizontal: wp(3) }}
-            />
-            <Text style={styles.quickMenuTitle}>Available to Donate</Text>
+          <View
+            style={{
+              ...styles.quickMenuCard,
+              justifyContent: "space-between",
+            }}
+          >
+            <View style={{ flexDirection: "row" }}>
+              <MaterialIcons
+                name={isOn ? "event-available" : "event-busy"}
+                size={24}
+                color="#FF2156"
+                style={{ paddingHorizontal: wp(3) }}
+              />
+
+              <Text style={styles.quickMenuTitle}>Available to Donate</Text>
+            </View>
+
+            <View style={{ marginEnd: 10 }}>
+              <ToggleSwitch
+                isOn={isOn}
+                onColor="green"
+                offColor="red"
+                onToggle={onToggle}
+              />
+            </View>
           </View>
+
           <TouchableOpacity style={styles.quickMenuCard}>
             <Feather
               name="mail"
@@ -92,6 +116,7 @@ export default function profile() {
             />
             <Text style={styles.quickMenuTitle}>Invite a friend</Text>
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.quickMenuCard}>
             <MaterialCommunityIcons
               name="information-variant"
@@ -101,14 +126,15 @@ export default function profile() {
             />
             <Text style={styles.quickMenuTitle}>Get Help</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.quickMenuCard}>
-            <Ionicons
-              name="ios-trail-sign-outline"
+
+          <TouchableOpacity style={styles.logout}>
+            <AntDesign
+              name="logout"
               size={24}
-              color="#FF2156"
+              color="#ffff"
               style={{ paddingHorizontal: wp(3) }}
             />
-            <Text style={styles.quickMenuTitle}>Sign Out</Text>
+            <Text style={styles.logoutText}>Sign Out</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -150,11 +176,13 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 3,
-    elevation: 0.4,
+    elevation: 2,
     alignItems: "center",
     margin: 10,
     justifyContent: "center",
     paddingVertical: wp(3),
+    backgroundColor: "#ECF2FF",
+
   },
   infoTitle: {
     fontSize: 30,
@@ -172,7 +200,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     flexDirection: "row",
     margin: 10,
-    alignContent: "center",
     alignItems: "center",
     borderRadius: 4,
   },
@@ -181,5 +208,22 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#7C7C7C",
     marginStart: 5,
+  },
+  logout: {
+    width: wp(60),
+    height: wp(17),
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FF2156",
+    alignSelf: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    borderRadius: 15,
+    elevation: 5,
+  },
+  logoutText: {
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#ffffff",
   },
 });

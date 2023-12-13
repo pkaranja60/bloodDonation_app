@@ -28,15 +28,10 @@ interface MenuCardProps {
 
 export default function SubMenu() {
   return (
-    <View>
-      <FlatList
-        numColumns={3}
-        data={subMenuOptions}
-        keyExtractor={(item) => item.name}
-        contentContainerStyle={{ paddingBottom: 20 }}
-        columnWrapperStyle={{ justifyContent: "space-evenly" }}
-        renderItem={({ item, index }) => <MenuCard index={index} item={item} />}
-      />
+    <View style={styles.container}>
+      {subMenuOptions.map((item, index) => (
+        <MenuCard key={item.name} index={index} item={item} />
+      ))}
     </View>
   );
 }
@@ -44,7 +39,7 @@ export default function SubMenu() {
 const MenuCard: React.FC<MenuCardProps> = ({ item, index }) => {
   return (
     <View style={{ alignContent: "center" }}>
-      <Link href={item.href} key={index} asChild>
+      <Link href={item.href} asChild>
         <TouchableOpacity style={styles.menuCard}>
           <Image source={item.image} style={styles.menuImage} />
           <Text style={styles.menuText}>{item.name}</Text>
@@ -55,11 +50,16 @@ const MenuCard: React.FC<MenuCardProps> = ({ item, index }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
   menuCard: {
     backgroundColor: "#ffffff",
     width: 111,
     height: 111,
-    margin: 15,
+    margin: 6,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
